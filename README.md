@@ -10,8 +10,7 @@
     1、在项目中的 pubspec.yaml 文件中添加 dio: 2.1.13 的支持
     2、将本项目中 lib 下 http_util 包考进自己项目中
     3、在需要使用的地方倒入 MyHttpUtil.dart、BaseResponse.dart、RequestListener.dart文件
-    4、发送请求
-```
+    4、发送请求：
     //Post请求
     _sendPostRequest() {
         MyHttpUtil().post(
@@ -33,7 +32,6 @@
             )
         );
     }
-```
     5、如果需要添加请求头、拦截器，修改一些参数，在MyHttpUtil.dart中进行修改，参考备注
 ### 友情提示
     习惯安卓开发的朋友可能习惯来安卓 json 解析的方式，在 flutter 开发时候对 flutter json 解析可能一下不是很适应，
