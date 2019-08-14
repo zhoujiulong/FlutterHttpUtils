@@ -33,23 +33,6 @@ class _MyHomePageState extends State<MyHomePage> {
   var msg = '点击获取网络数据';
   List<song> songList = List<song>();
 
-  //发送请求
-  _sendRequest() {
-    MyHttpUtil().post(
-        "musicBroadcastingDetails?channelname=public_tuijian_spring",
-        RequestListener((BaseResponse data) => {_onResponseSuccess(data)},
-            (BaseResponse errorData) => msg = "网络请求失败，点击重新获取：${errorData.message}"));
-  }
-
-  //请求成功
-  _onResponseSuccess(BaseResponse data) {
-    music_broadcasting_details_bean bean = music_broadcasting_details_bean.fromJson(data.result);
-    setState(() {
-      msg = "获取网络数据成功，点击重新获取";
-      songList = bean.songlist;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,6 +55,31 @@ class _MyHomePageState extends State<MyHomePage> {
         color: Colors.green,
       ),
     );
+  }
+
+  //发送请求
+  _sendRequest() {
+    MyHttpUtil().post(
+        "musicBroadcastingDetails?channelname=public_tuijian_spring",
+        RequestListener(
+            onSuccessListener: (BaseResponse data) => _onResponseSuccess(data),
+            onErrorListener: (BaseResponse errorData) => _onResponseError(errorData)));
+  }
+
+  //请求成功
+  _onResponseSuccess(BaseResponse data) {
+    music_broadcasting_details_bean bean = music_broadcasting_details_bean.fromJson(data.result);
+    setState(() {
+      msg = "获取网络数据成功，点击重新获取";
+      songList = bean.songlist;
+    });
+  }
+
+  //请求失败
+  _onResponseError(BaseResponse data) {
+    setState(() {
+      msg = "网络请求失败，点击重新获取：${data.message}";
+    });
   }
 
   //创建 item

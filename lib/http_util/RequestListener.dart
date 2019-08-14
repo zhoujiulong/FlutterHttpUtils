@@ -4,18 +4,19 @@ import 'BaseResponse.dart';
 
 ///网络请求监听
 class RequestListener {
-  RequestListener(this.onSuccessListener, this.onErrorListener);
+  RequestListener({@required this.onSuccessListener, @required this.onErrorListener});
 
   //请求成功
   final ValueChanged<BaseResponse> onSuccessListener;
+
   //请求失败
   final ValueChanged<BaseResponse> onErrorListener;
 
   void onSuccess(BaseResponse response) {
-    onSuccessListener(response);
+    if (onSuccessListener != null) onSuccessListener(response);
   }
 
   void onError(BaseResponse response) {
-    onErrorListener(response);
+    if (onErrorListener != null) onErrorListener(response);
   }
 }
