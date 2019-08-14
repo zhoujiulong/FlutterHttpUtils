@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   //发送请求
   _sendRequest() {
-    MyHttpUtil.getInstance().post(
+    MyHttpUtil.instance.post(
         "musicBroadcastingDetails?channelname=public_tuijian_spring",
         RequestListener(
             onSuccessListener: (BaseResponse data) => _onResponseSuccess(data),
