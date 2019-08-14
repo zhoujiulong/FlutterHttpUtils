@@ -13,7 +13,7 @@
     4、发送请求：
     //Post请求
     _sendPostRequest() {
-        MyHttpUtil().post(
+        MyHttpUtil.getInstance().post(
             "musicBroadcastingDetails?channelname=public_tuijian_spring",
             RequestListener(
                 onSuccessListener: (BaseResponse data) => _onResponseSuccess(data),
@@ -24,7 +24,7 @@
     
     //Get请求
     _sendGetRequest() {
-        MyHttpUtil().get(
+        MyHttpUtil.getInstance().get(
             "musicBroadcastingDetails?channelname=public_tuijian_spring",
             RequestListener(
                 onSuccessListener: (BaseResponse data) => _onResponseSuccess(data),
@@ -37,7 +37,6 @@
     习惯安卓开发的朋友可能习惯来安卓 json 解析的方式，在 flutter 开发时候对 flutter json 解析可能一下不是很适应，
     因为 flutter json 解析需要额外做一些处理，可以参考下面这篇文章
 [在 Flutter 中解析复杂的 JSON](https://github.com/xitu/gold-miner/blob/master/TODO1/parsing-complex-json-in-flutter.md)
-### demo 代码和运行效果图片如下
-  <img src="https://github.com/zhoujiulong/flutter_http_utils/blob/master/img/pic_b.png?raw=true" width="80%"/>
+### demo 代码运行效果如下
   <img src="https://github.com/zhoujiulong/flutter_http_utils/blob/master/img/img_a.png?raw=true" width="30%"/>
 
