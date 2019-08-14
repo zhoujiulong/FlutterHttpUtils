@@ -9,7 +9,7 @@
 ### 使用方式
     1、在项目中的 pubspec.yaml 文件中添加 dio: 2.1.13 的支持
     2、将本项目中 lib 下 http_util 包考进自己项目中
-    3、在需要使用的地方倒入 MyHttpUtil.dart、BaseResponse.dart、RequestListener.dart文件
+    3、在需要使用的地方导入 MyHttpUtil.dart、BaseResponse.dart、RequestListener.dart文件
     4、发送请求：
     //Post请求
     _sendPostRequest() {
