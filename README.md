@@ -11,7 +11,7 @@
     2、将本项目中 lib 下 http_util 包考进自己项目中
     3、在需要使用的地方倒入 MyHttpUtil.dart、BaseResponse.dart、RequestListener.dart文件
     4、发送请求
-    ```
+```
     //Post请求
     _sendPostRequest() {
         MyHttpUtil().post(
@@ -33,13 +33,13 @@
             )
         );
     }
-    ```
+```
     5、如果需要添加请求头、拦截器，修改一些参数，在MyHttpUtil.dart中进行修改，参考备注
 ### 友情提示
     习惯安卓开发的朋友可能习惯来安卓 json 解析的方式，在 flutter 开发时候对 flutter json 解析可能一下不是很适应，
     因为 flutter json 解析需要额外做一些处理，可以参考这篇文章
 [在 Flutter 中解析复杂的 JSON](https://github.com/xitu/gold-miner/blob/master/TODO1/parsing-complex-json-in-flutter.md)
 ### demo 代码和运行效果图片如下
-  <img src="https://github.com/zhoujiulong/CustomBottomTabBar/blob/master/img/pic_b.jpg?raw=true" width="30%"/>
+  <img src="https://github.com/zhoujiulong/flutter_http_utils/blob/master/img/pic_b.png?raw=true" width="80%"/>
   <img src="https://github.com/zhoujiulong/flutter_http_utils/blob/master/img/img_a.png?raw=true" width="30%"/>
 
