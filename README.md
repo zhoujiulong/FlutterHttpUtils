@@ -13,7 +13,7 @@
     4、发送请求：
     //Post请求
     _sendPostRequest() {
-        MyHttpUtil.getInstance().post(
+        MyHttpUtil.instance.post(
             "musicBroadcastingDetails?channelname=public_tuijian_spring",
             RequestListener(
                 onSuccessListener: (BaseResponse data) => _onResponseSuccess(data),
@@ -24,7 +24,7 @@
     
     //Get请求
     _sendGetRequest() {
-        MyHttpUtil.getInstance().get(
+        MyHttpUtil.instance.get(
             "musicBroadcastingDetails?channelname=public_tuijian_spring",
             RequestListener(
                 onSuccessListener: (BaseResponse data) => _onResponseSuccess(data),
