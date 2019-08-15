@@ -34,6 +34,7 @@
     }
     5、如果需要添加请求头、拦截器，修改一些参数，在MyHttpUtil.dart中进行修改，参考备注
 ### 友情提示
+    如果下载此项目在mac运行在ios设备上报 Podfile.lock 相关错误，尝试用终端进入到ios目录下执行 pod install 命令
     习惯安卓开发的朋友可能习惯来安卓 json 解析的方式，在 flutter 开发时候对 flutter json 解析可能一下不是很适应，
     因为 flutter json 解析需要额外做一些处理，可以参考下面这篇文章
 [在 Flutter 中解析复杂的 JSON](https://github.com/xitu/gold-miner/blob/master/TODO1/parsing-complex-json-in-flutter.md)
