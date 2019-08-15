@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_http_utils/music_broadcasting_details_bean.dart';
+import 'package:flutter_http_utils/bean/Music.dart';
 
 import 'http_util/BaseResponse.dart';
 import 'http_util/MyHttpUtil.dart';
@@ -31,7 +31,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var msg = '点击获取网络数据';
-  List<song> songList = List<song>();
+  List<Song> songList = List<Song>();
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   //请求成功
   _onResponseSuccess(BaseResponse data) {
-    music_broadcasting_details_bean bean = music_broadcasting_details_bean.fromJson(data.result);
+    Music bean = Music.fromJson(data.result);
     setState(() {
       msg = "获取网络数据成功，点击重新获取";
       songList = bean.songlist;
@@ -83,8 +83,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   //创建 item
-  Widget _buildItem(song data) {
-    if (data == null) data = song();
+  Widget _buildItem(Song data) {
+    if (data == null) data = Song();
     String title = data.title != null ? data.title : "未知标题";
     String artist = data.artist != null ? data.artist : "未知艺术家";
     String imgSrc = data.thumb != null ? data.thumb : "";
