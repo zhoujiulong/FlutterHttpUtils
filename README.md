@@ -55,7 +55,7 @@
     习惯安卓开发的朋友可能习惯来安卓 json 解析的方式，在 flutter 开发时候对 flutter json 解析可能一下不是很适应，
     因为 flutter json 解析需要额外做一些处理，可以参考下面这篇文章（在 Flutter 中解析复杂的 JSON）
     当然flutter也有一些开源库是针对 json 解的，如 json_serializable package，具体使用方法参考下面这篇文章（使用
-    代码生成库序列化JSON），part 导入的时候名称要和文件名相同不然会运行 flutter packages pub run build_runner build 不通过
+    代码生成库序列化JSON），part 导入的时候名称要和文件名相同不然会运行 flutter packages pub run build_runner build 错误
 [在 Flutter 中解析复杂的 JSON](https://github.com/xitu/gold-miner/blob/master/TODO1/parsing-complex-json-in-flutter.md)
 [使用代码生成库序列化JSON](https://flutterchina.club/json/)
 ### demo 代码运行效果如下
