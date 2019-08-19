@@ -49,7 +49,7 @@ class MyHttpUtil {
   }
 
   ///网络请求
-  _requestHttp<T>(String url, RequestListener requestListener, [String method, FormData params]) async {
+  _requestHttp(String url, RequestListener requestListener, [String method, FormData params]) async {
     try {
       Response<Map<String, dynamic>> response;
       if (method == _GET) {
