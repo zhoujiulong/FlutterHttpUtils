@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'Music.g.dart';
+part 'music.g.dart';
 
 ///这个标注是告诉生成器，这个类是需要生成Model类的
 @JsonSerializable()

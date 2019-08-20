@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'BaseResponse.dart';
+import 'base_response.dart';
 
 ///网络请求监听
 class RequestListener {

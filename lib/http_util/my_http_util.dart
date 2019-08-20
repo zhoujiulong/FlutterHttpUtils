@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
-import 'BaseResponse.dart';
-import 'RequestListener.dart';
+import 'request_listener.dart';
+import 'base_response.dart';
 
 ///网络请求工具类，单例处理
 class MyHttpUtil {

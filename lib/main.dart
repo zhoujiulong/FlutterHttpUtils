@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_http_utils/bean/Music.dart';
+import 'package:flutter_http_utils/bean/music.dart';
 
-import 'http_util/BaseResponse.dart';
-import 'http_util/MyHttpUtil.dart';
-import 'http_util/RequestListener.dart';
+import 'http_util/base_response.dart';
+import 'http_util/my_http_util.dart';
+import 'http_util/request_listener.dart';
 
 void main() => runApp(MyApp());
 
