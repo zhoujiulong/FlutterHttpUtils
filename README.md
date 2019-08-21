@@ -6,6 +6,7 @@
     信息我们会定义一套数据结构模版如前后台协同定义的状态码，如区分token失效等，所以在开发中我们需要对网络框架进行进
     一步的封装来达到统一处理类似切面编程的效果，同时对网络请求框架进行进一步封装之后也方便后期对网络请求框架的替换，
     因为在实际的使用中我们是可以不引用网络框架代码的。
+    项目中添加来 bloc 框架的使用，使得页面和逻辑层相互独立，具体参考参考：https://www.jianshu.com/p/4d5e712594b4
 ### 使用方式
     1、在项目中的 pubspec.yaml 文件中添加 dio: 2.1.13 的支持，如果不需要json序列化可不添加json_serializable相
     关的库，依赖如下：
@@ -18,6 +19,8 @@
           dio: 2.1.13
           #json序列化库 ：json_serializable
           json_annotation: ^2.0.0
+          #bloc 框架使用时用到，不用到 bloc 框架的可不添加
+          rxdart: ^0.19.0
         
         dev_dependencies:
           flutter_test:
