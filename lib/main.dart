@@ -1,85 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_http_utils/bean/music.dart';
 
-import 'http_util/base_response.dart';
-import 'http_util/my_http_util.dart';
-import 'http_util/request_listener.dart';
+import 'bloc/bloc_provider.dart';
+import 'bloc/music_bloc.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return BlocProvider<MusicBloc>(
+      bloc: MusicBloc(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: MyHomePage(),
       ),
-      home: MyHomePage(title: 'http utils'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  var msg = '点击获取网络数据';
-  List<Song> songList = List<Song>();
-
+class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    MusicBloc bloc = BlocProvider.of<MusicBloc>(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("http util"),
       ),
-      //列表显示返回的数据
-      body: ListView.builder(
-        itemCount: songList.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: _buildItem(songList[index]),
-          );
-        },
-      ),
-      //按钮，点击获取网络数据
-      floatingActionButton: FlatButton(
-        onPressed: _sendRequest,
-        child: Text(msg),
-        color: Colors.green,
-      ),
+      body: StreamBuilder(
+          stream: bloc.musicStream,
+          builder: (BuildContext context, AsyncSnapshot<Music> snapshot) {
+            //如果数据为空则返回获取数据按钮
+            if (snapshot.data == null) {
+              return Center(
+                child: FlatButton(
+                  onPressed: () {
+                    bloc.getMusic();
+                  },
+                  child: Text('点击获取网络数据'),
+                  color: Colors.green,
+                ),
+              );
+            }
+            //列表显示返回的数据
+            return ListView.builder(
+              itemCount: snapshot.data.songlist.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: _buildItem(snapshot.data.songlist[index]),
+                );
+              },
+            );
+          }),
     );
-  }
-
-  //发送请求
-  _sendRequest() {
-    MyHttpUtil.instance.post(
-        "musicBroadcastingDetails?channelname=public_tuijian_spring",
-        RequestListener(
-            onSuccessListener: (BaseResponse data) => _onResponseSuccess(data),
-            onErrorListener: (BaseResponse errorData) => _onResponseError(errorData)));
-  }
-
-  //请求成功
-  _onResponseSuccess(BaseResponse data) {
-    Music bean = Music.fromJson(data.result);
-    setState(() {
-      msg = "获取网络数据成功，点击重新获取";
-      songList = bean.songlist;
-    });
-  }
-
-  //请求失败
-  _onResponseError(BaseResponse data) {
-    setState(() {
-      msg = "网络请求失败，点击重新获取：${data.message}";
-    });
   }
 
   //创建 item
